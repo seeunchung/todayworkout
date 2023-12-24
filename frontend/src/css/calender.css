@@ -1,0 +1,84 @@
+/*타이틀*/
+.calender .year-title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.calender .month-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.month-title .month {
+  font-size: 2.5rem;
+  line-height: 1;
+  margin: 0 20px;
+  font-weight: bold;
+}
+
+.month-title .pre-button,
+.next-button {
+  width: 40px;
+  height: 40px;
+  font-size: 2rem;
+  border: none;
+  cursor: pointer;
+}
+
+/*day 표시*/
+
+.day-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-top: 20px;
+  background-color: #1aac83;
+}
+
+.day-container div {
+  padding: 10px;
+  text-align: center;
+  line-height: 40px;
+  color: #fff;
+  font-weight: bold;
+  height: 40px;
+  font-size: 1rem;
+}
+
+/*date 표시*/
+
+.date-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.date-container div {
+  border: 0.5px solid #ddd;
+  height: 100px;
+}
+
+.date-container .topline {
+  padding-left: 4px;
+}
+
+.date-container .today {
+  margin-left: 2px;
+  font-size: 0.9rem;
+  color: blue;
+}
+
+.date-container .current-month {
+  font-weight: bold;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.date-container .diff-month {
+  color: #ddd;
+}
