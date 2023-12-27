@@ -1,9 +1,5 @@
 import { useWorkoutsContext } from '../hooks/useWorkcoutsContext'
 
-//date fns
-import { format } from 'date-fns'
-
-
 const WorkoutDetails = ({ workout }) => {
 
   const { dispatch } = useWorkoutsContext();
@@ -24,7 +20,7 @@ const WorkoutDetails = ({ workout }) => {
       <p><strong>무게 (kg):</strong>{workout.load}</p>
       <p><strong>횟수(분):</strong>{workout.reps}</p>
       <p><strong>세트:</strong>{workout.set}</p>
-      <p>{format(new Date(workout.createdAt), 'yyyy.MM.dd')}</p>
+      <p>{workout.date}</p>
       <span onClick={handleClick}>delete</span>
     </div>
   )

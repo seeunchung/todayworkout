@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 
 //get all workouts
 const getWorkouts = async (req, res) => {
-  const workouts = await Workout.find({}).sort({ createdAt: -1 });
+  // 문자열 형태로 저장된 날짜를 기준으로 내림차순 정렬
+  const workouts = await Workout.find({}).sort({ date: -1 });
   res.status(200).json(workouts);
 }
 
@@ -26,7 +27,7 @@ const getWorkout = async (req, res) => {
 
 //create new workout
 const createWorkout = async (req, res) => {
-  const { title, load, reps, set } = req.body;
+  const { title, load, reps, set, date } = req.body;
 
   let emptyFields = []
 
@@ -48,7 +49,7 @@ const createWorkout = async (req, res) => {
   }
   //add doc to db
   try {
-    const workout = await Workout.create({ title, load, reps, set });
+    const workout = await Workout.create({ title, load, reps, set, date });
     res.status(200).json(workout);
   } catch (error) {
     res.status(400).json({ error: error.message })

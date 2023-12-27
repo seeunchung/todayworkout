@@ -8,6 +8,7 @@ export const workoutsReducer = (state, action) => {
       return {
         workouts: action.payload
       }
+
     case 'CREATE_WORKOUT':
       return {
         workouts: [action.payload, ...state.workouts]
@@ -16,6 +17,14 @@ export const workoutsReducer = (state, action) => {
       return {
         workouts: state.workouts.filter((w) => w._id !== action.payload._id)
       }
+    case 'FILTER_WORKOUTS_BY_DATE':
+      // 날짜에 해당하는 운동 정보만 필터링
+      const filteredWorkouts = state.workouts.filter((w) => {
+        return w.date === action.payload.date;
+      });
+      return {
+        workouts: filteredWorkouts
+      };
     default:
       return state
   }

@@ -1,4 +1,5 @@
 import { useCallback, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 //date-fns
 import {
@@ -78,16 +79,18 @@ const MainCalender = () => {
             };
           }
           return (
-            <div
-              key={`date${i}`}
-              className={validation ? 'current-month' : 'diff-month'}
-              style={style}
-            >
-              <div className='topline'>
-                <span className='day'>{format(v, "d")}</span>
-                {today && <span className='today'>(오늘)</span>}
+            <Link to={`/${format(v, 'yyyy-MM-dd')}`} key={`date${i}`}>
+              <div
+                key={`date${i}`}
+                className={validation ? 'current-month' : 'diff-month'}
+                style={style}
+              >
+                <div className='topline'>
+                  <span className='day'>{format(v, "d")}</span>
+                  {today && <span className='today'>(오늘)</span>}
+                </div>
               </div>
-            </div>
+            </Link>
           )
         })}
       </div>

@@ -1,7 +1,22 @@
 import { useState } from 'react';
 import { useWorkoutsContext } from '../hooks/useWorkcoutsContext'
+import { useParams } from 'react-router-dom';
+
+//date fns
+import { format } from 'date-fns'
+
 
 const WorkoutForm = () => {
+  const { date: urlDate } = useParams();
+  let date;
+  // URL 파라미터 값이 있으면 해당 값을 파싱하여 초기화
+  if (urlDate) {
+    date = urlDate;
+  } else {
+    // URL 파라미터 값이 없으면 현재 날짜를 초기화
+    date = format(new Date(), 'yyyy-MM-dd');
+  }
+
   const { dispatch } = useWorkoutsContext()
   const [title, setTitle] = useState('')
   const [load, setLoad] = useState('')
@@ -12,7 +27,7 @@ const WorkoutForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const workout = { title, load, reps, set };
+    const workout = { title, load, reps, set, date };
     const response = await fetch('/api/workouts', {
       method: 'POST',
       body: JSON.stringify(workout),
