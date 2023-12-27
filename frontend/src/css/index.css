@@ -70,10 +70,10 @@ header a {
   top: 20px;
   right: 20px;
   cursor: pointer;
-  background: #f1f1f1;
+  background: #730c0c;
+  border-radius: 4px;
   padding: 6px;
-  border-radius: 50%;
-  color: #333;
+  color: #fff;
 }
 
 /* new workout form */

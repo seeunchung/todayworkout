@@ -72,6 +72,11 @@
   padding-left: 4px;
 }
 
+.topline .completed {
+  display: block;
+  color: black;
+}
+
 .date-container .today {
   margin-left: 2px;
   font-size: 0.9rem;
@@ -84,5 +89,9 @@
 }
 
 .date-container .diff-month {
+  color: #ddd;
+}
+
+.diff-month .topline .completed {
   color: #ddd;
 }

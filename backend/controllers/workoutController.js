@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 //get all workouts
 const getWorkouts = async (req, res) => {
   // 문자열 형태로 저장된 날짜를 기준으로 내림차순 정렬
-  const workouts = await Workout.find({}).sort({ date: -1 });
+  const workouts = await Workout.find({}).sort({ date: -1, createdAt: -1 });
   res.status(200).json(workouts);
 }
 
@@ -24,6 +24,15 @@ const getWorkout = async (req, res) => {
   }
   res.status(200).json(workout);
 }
+
+// get workouts by date
+const getWorkoutByDate = async (req, res) => {
+  const { date } = req.params;
+  const workouts = await Workout.find({ date: date }).sort({ createdAt: -1 });
+  res.status(200).json(workouts);
+}
+
+
 
 //create new workout
 const createWorkout = async (req, res) => {
@@ -94,6 +103,7 @@ const updateWorkout = async (req, res) => {
 module.exports = {
   getWorkouts,
   getWorkout,
+  getWorkoutByDate,
   createWorkout,
   deleteWorkout,
   updateWorkout

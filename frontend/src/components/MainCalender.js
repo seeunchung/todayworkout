@@ -16,7 +16,7 @@ import {
   isSunday,
 } from "date-fns";
 
-const MainCalender = () => {
+const MainCalender = ({ workouts }) => {
   const [currnetDate, setCurrentDate] = useState(new Date()); //현재 날짜
   const monthStart = startOfMonth(currnetDate); //현재 달의 시작 날짜
   const monthEnd = endOfMonth(currnetDate); // 현재 달의 마지막 날짜
@@ -88,6 +88,7 @@ const MainCalender = () => {
                 <div className='topline'>
                   <span className='day'>{format(v, "d")}</span>
                   {today && <span className='today'>(오늘)</span>}
+                  {workouts.find((w) => w.date === format(v, 'yyyy-MM-dd')) && <span className='completed'>오운완</span>}
                 </div>
               </div>
             </Link>
