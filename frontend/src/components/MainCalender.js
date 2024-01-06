@@ -88,7 +88,7 @@ const MainCalender = ({ workouts }) => {
                 <div className='topline'>
                   <span className='day'>{format(v, "d")}</span>
                   {today && <span className='today'>(오늘)</span>}
-                  {workouts.find((w) => w.date === format(v, 'yyyy-MM-dd')) && <span className='completed'>오운완</span>}
+                  {workouts.find((w) => w.date === format(v, 'yyyy-MM-dd')) && <span className='completed'>오운완!</span>}
                 </div>
               </div>
             </Link>

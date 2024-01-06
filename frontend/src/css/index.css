@@ -1,5 +1,14 @@
-/* google font */
+/* 영어 google font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
+
+/*한글폰트*/
+@font-face {
+  font-family: 'GangwonEdu';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduPowerExtraBoldA.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 
 /* layout */
 :root {
@@ -10,7 +19,7 @@
 body {
   background: #f1f1f1;
   margin: 0;
-  font-family: "Poppins";
+  font-family: "Poppins", 'GangwonEdu';
 }
 
 header {
@@ -63,6 +72,10 @@ header a {
   margin: 0;
   font-size: 0.9em;
   color: #555;
+}
+
+.workout-details p strong {
+  margin-right: 4px;
 }
 
 .workout-details span {
