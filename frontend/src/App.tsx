@@ -1,12 +1,13 @@
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-//pages & components
+// pages & components
 import Home from './pages/Home';
 import Calender from './pages/Calender';
 import Navbar from './components/Navbar';
 import WorkoutByDate from './pages/WorkoutByDate';
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
       <BrowserRouter>

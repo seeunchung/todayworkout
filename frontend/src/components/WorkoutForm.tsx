@@ -1,14 +1,15 @@
-import { useState } from 'react';
-import { useWorkoutsContext } from '../hooks/useWorkcoutsContext'
+import React from 'react';
+import { useState, FormEvent } from 'react';
+import { useWorkoutsContext } from '../hooks/useWorkcoutsContext';
 import { useParams } from 'react-router-dom';
 
-//date fns
-import { format } from 'date-fns'
-
+// date-fns
+import { format } from 'date-fns';
 
 const WorkoutForm = () => {
-  const { date: urlDate } = useParams();
-  let date;
+  const { date: urlDate } = useParams<string>();
+  let date: string;
+
   // URL 파라미터 값이 있으면 해당 값을 파싱하여 초기화
   if (urlDate) {
     date = urlDate;
@@ -17,16 +18,17 @@ const WorkoutForm = () => {
     date = format(new Date(), 'yyyy-MM-dd');
   }
 
-  const { dispatch } = useWorkoutsContext()
-  const [title, setTitle] = useState('')
-  const [load, setLoad] = useState('')
-  const [reps, setReps] = useState('')
-  const [set, setSet] = useState('')
-  const [error, setError] = useState(null)
-  const [emptyFields, setEmptyFields] = useState([])
+  const { dispatch } = useWorkoutsContext();
+  const [title, setTitle] = useState<string>('');
+  const [load, setLoad] = useState<string>('');
+  const [reps, setReps] = useState<string>('');
+  const [set, setSet] = useState<string>('');
+  const [error, setError] = useState<string | null>(null);
+  const [emptyFields, setEmptyFields] = useState<string[]>([]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const workout = { title, load, reps, set, date };
     const response = await fetch('/api/workouts', {
       method: 'POST',
@@ -34,12 +36,13 @@ const WorkoutForm = () => {
       headers: {
         'Content-Type': 'application/json'
       }
-    })
+    });
+
     const json = await response.json();
 
     if (!response.ok) {
       setError(json.error);
-      setEmptyFields(json.emptyFields)
+      setEmptyFields(json.emptyFields || []);
     }
     if (response.ok) {
       setTitle('');
@@ -51,7 +54,8 @@ const WorkoutForm = () => {
       console.log('new workout added', json);
       dispatch({ type: 'CREATE_WORKOUT', payload: json });
     }
-  }
+  };
+
   return (
     <form className='create' onSubmit={handleSubmit}>
       <h3>운동을 추가하세요</h3>
@@ -85,11 +89,10 @@ const WorkoutForm = () => {
         value={set}
         className={emptyFields.includes('set') ? 'error' : ''}
       />
-      <button>ADD</button>
+      <button type='submit'>ADD</button>
       {error && <div className='error'>{error}</div>}
     </form>
-
-  )
-}
+  );
+};
 
 export default WorkoutForm;

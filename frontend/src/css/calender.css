@@ -4,6 +4,7 @@
   font-size: 1.5rem;
   font-weight: bold;
   margin-top: 10px;
+  color: #4a4949;
 }
 
 .calender .month-title {
@@ -11,22 +12,24 @@
   justify-content: center;
   align-items: center;
   padding: 0 10px;
+  color: #4a4949;
 }
 
 .month-title .month {
-  font-size: 2.5rem;
+  font-size: 2rem;
   line-height: 1;
   margin: 0 20px;
   font-weight: bold;
+  color: #4a4949;
 }
 
-.month-title .pre-button,
+.pre-button,
 .next-button {
-  width: 40px;
-  height: 40px;
   font-size: 2rem;
   border: none;
   cursor: pointer;
+  background: none;
+  color: #ffdfdf;
 }
 
 /*day 표시*/
@@ -36,7 +39,7 @@
   grid-template-columns: repeat(7, 1fr);
   gap: 5px;
   margin-top: 20px;
-  background-color: #1aac83;
+  background-color: #ffdfdf;
 }
 
 .day-container div {
@@ -59,12 +62,12 @@
 }
 
 .date-container a {
-  color: black;
+  color: #4a4949;
   text-decoration: none;
 }
 
 .date-container div {
-  border: 0.5px solid #ddd;
+  /* border: 0.5px solid #ffdfdf; */
   height: 100px;
 }
 
@@ -74,12 +77,12 @@
 
 .topline .completed {
   display: block;
-  color: #1aac83;
+  color: #aedefc;
 }
 
 .date-container .today {
   margin-left: 2px;
-  font-size: 0.9rem;
+  font-size: 0.5rem;
 }
 
 .date-container .current-month {
@@ -89,9 +92,23 @@
 }
 
 .date-container .diff-month {
-  color: #ddd;
+  color: #ffdfdf;
 }
 
 .diff-month .topline .completed {
-  color: #ddd;
+  color: #ffdfdf;
+}
+
+/* 미디어쿼리 */
+@media (max-width: 600px) {
+  .day-container div {
+    padding: 6px;
+    height: 36px;
+  }
+  .date-container {
+    font-size: 0.8rem;
+  }
+  .date-container div {
+    height: 60px;
+  }
 }

@@ -1,3 +1,4 @@
+import React from 'react'; 
 import { useEffect } from 'react';
 import { useWorkoutsContext } from '../hooks/useWorkcoutsContext'
 
@@ -5,8 +6,25 @@ import { useWorkoutsContext } from '../hooks/useWorkcoutsContext'
 import WorkoutDetails from '../components/WorkoutDetail';
 import WorkoutForm from '../components/WorkoutForm';
 
-const Home = () => {
-  const { workouts, dispatch } = useWorkoutsContext()
+// Workout 타입 정의
+interface Workout {
+  _id: string;
+  title: string;
+  load: number;
+  reps: number;
+  set: number;
+  date: string;
+  [key: string]: any; 
+}
+
+// useWorkoutsContext 훅의 타입 정의
+interface WorkoutsContextType {
+  workouts: Workout[];
+  dispatch: React.Dispatch<{ type: string; payload?: any }>;
+}
+
+const Home: React.FC = () => {
+  const { workouts, dispatch } = useWorkoutsContext() as WorkoutsContextType;
 
   useEffect(() => {
     const fetchWorkouts = async () => {
