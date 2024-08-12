@@ -13,7 +13,7 @@ interface Workout {
   load: number;
   reps: number;
   set: number;
-  date: string; // or whatever type 'datets' is supposed to be
+  date: string;
   [key: string]: any; 
 }
 
